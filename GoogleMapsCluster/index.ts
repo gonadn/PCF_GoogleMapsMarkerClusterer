@@ -42,6 +42,7 @@ export class GoogleMapsCluster implements ComponentFramework.StandardControl<IIn
 				this.initMap();
 				this.getCurrentLocation();
 				this.getData(this._context);
+				this.addMarkerClusterer();
 			}, 500);
 
 			this._mapDiv = document.createElement("div");
@@ -129,8 +130,11 @@ export class GoogleMapsCluster implements ComponentFramework.StandardControl<IIn
 				})(marker, content));
 			}				
 		}
+		  this.gMap = LocalMap;
+	}
 
-		  const img = {
+	public addMarkerClusterer(){
+		const img = {
 			imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
 			gridSize: 10,
 			minimumClusterSize: 2
@@ -142,8 +146,6 @@ export class GoogleMapsCluster implements ComponentFramework.StandardControl<IIn
 				this.markerClusterer.addMarkers(this.markers);
 			}
 		  }
-
-		  this.gMap = LocalMap;
 	}
 
 	public addGoogleScriptToHeader(context: any): void {
@@ -170,14 +172,11 @@ export class GoogleMapsCluster implements ComponentFramework.StandardControl<IIn
 	{
 		console.log("update view called");
 		$( document ).ready(() => {
-			const LocalMap = this.gMap;
 			setTimeout(() => {
 				this.initMap();
 				this.getCurrentLocation();
 				this.getData(context);
-
-				this.gMap = LocalMap;
-
+				this.addMarkerClusterer();
 			}, 500);			
 		});
 	}
