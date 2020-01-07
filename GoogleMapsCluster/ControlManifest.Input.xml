@@ -8,11 +8,13 @@
       <property-set name="samplePropertySet" display-name-key="Property_Display_Key" description-key="Property_Desc_Key" of-type="SingleLine.Text" usage="bound" required="true" />
       -->
     </data-set>
+    
     <property name="primaryFieldName" display-name-key="MapGrid_primaryField_Display_Key" description-key="MapGrid_primaryField_Desc_Key" of-type="SingleLine.Text" usage="input" required="true" default-value="name" />
     <property name="latFieldName" display-name-key="MapGrid_latField_Display_Key" description-key="MapGrid_latField_Desc_Key" of-type="SingleLine.Text" usage="input" required="true" default-value="address1_latitude" />
     <property name="longFieldName" display-name-key="MapGrid_longField_Display_Key" description-key="MapGrid_longField_Desc_Key" of-type="SingleLine.Text" usage="input" required="true" default-value="address1_longitude" />
     <property name="googleMapsAPIKey" display-name-key="MapGrid_googleMapsAPIKey_Display_Key" description-key="MapGrid_googleMapsAPIKey_Desc_Key" of-type="SingleLine.Text" usage="input" required="true" />
-    <!-- 
+  
+   <!-- 
       Property node's of-type attribute can be of-type-group attribute. 
       Example:
       <type-group name="numbers">
