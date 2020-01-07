@@ -41,8 +41,9 @@ export class GoogleMapsCluster implements ComponentFramework.StandardControl<IIn
 			setTimeout(() => {
 				this.initMap();
 				this.getCurrentLocation();
-				this.getData(this._context);
-				this.addMarkerClusterer();
+				this.getData(context).then((markers: any) => {
+					this.addMarkerClusterer(markers);
+				});
 			}, 500);
 
 			this._mapDiv = document.createElement("div");
@@ -89,61 +90,61 @@ export class GoogleMapsCluster implements ComponentFramework.StandardControl<IIn
 	}
 
 	public getData(context: ComponentFramework.Context<IInputs>) {
-        const dataSet = context.parameters.mapDataSet;
-		let latField: string = context.parameters.latFieldName.raw ? context.parameters.latFieldName.raw : "";
-        let longField: string = context.parameters.longFieldName.raw ? context.parameters.longFieldName.raw : "";
-        let nameField: string = context.parameters.primaryFieldName.raw ? context.parameters.primaryFieldName.raw : "";
-		const LocalMap = this.gMap;
+		return new Promise(async (resolve) => {
+			const dataSet = context.parameters.mapDataSet;
+			let latField: string = context.parameters.latFieldName.raw ? context.parameters.latFieldName.raw : "";
+			let longField: string = context.parameters.longFieldName.raw ? context.parameters.longFieldName.raw : "";
+			let nameField: string = context.parameters.primaryFieldName.raw ? context.parameters.primaryFieldName.raw : "";
+			const LocalMap = this.gMap;
 
-        if (dataSet == null || latField == "" || longField == "" ) {
-            return;
-		}
+			if (dataSet == null || latField == "" || longField == "" ) {
+				return;
+			}
 
-		const infowindow = new google.maps.InfoWindow();
-		
-		for (let i = 0; i < context.parameters.mapDataSet.paging.totalResultCount; i++) {
+			const infowindow = new google.maps.InfoWindow();
+			
+			for (var i = 0; i < context.parameters.mapDataSet.paging.totalResultCount; i++) {
+				const recordId = dataSet.sortedRecordIds[i];
+				const record = dataSet.records[recordId] as DataSetInterfaces.EntityRecord;
+				const content = this.buildInforWindow(dataSet.getTargetEntityType(), recordId, record, dataSet.columns);
+				const latitutde = record.getValue(latField) as any;
+				const longitutde = record.getValue(longField) as any;
+				const accountLatLng = { lat: parseFloat(latitutde), lng: parseFloat(longitutde) };
+				//const myLatLng = { lat: 59.913868, lng: 10.752245};
+				const _title = record.getValue(nameField) as any; 
 
-            const recordId = dataSet.sortedRecordIds[i];
-            const record = dataSet.records[recordId] as DataSetInterfaces.EntityRecord;
-			const content = this.buildInforWindow(dataSet.getTargetEntityType(), recordId, record, dataSet.columns);
-			const latitutde = record.getValue(latField) as any;
-			const longitutde = record.getValue(longField) as any;
-            const accountLatLng = { lat: parseFloat(latitutde), lng: parseFloat(longitutde) };
-			//const myLatLng = { lat: 59.913868, lng: 10.752245};
-			const _title = record.getValue(nameField) as any; 
-			console.log(_title);
-			console.log(accountLatLng);
+				if (google !== null && google !== undefined) {
+					const marker = new google.maps.Marker({
+						position: accountLatLng,
+						title: _title
+					});	
 
-			if (google !== null && google !== undefined) {
-				const marker = new google.maps.Marker({
-					position: accountLatLng,
-					map: this.gMap,
-					title: _title
-				});		
-				this.markers.push(marker);
+					this.markers.push(marker);
 
-				google.maps.event.addListener(marker, 'click', ((marker: any, content: any) => {
-					return  () => {
-						infowindow.setContent(content);
-						infowindow.open(LocalMap, marker);
-					}
-				})(marker, content));
-			}				
-		}
-		  this.gMap = LocalMap;
+					google.maps.event.addListener(marker, 'click', ((marker: any, content: any) => {
+						return  () => {
+							infowindow.setContent(content);
+							infowindow.open(LocalMap, marker);
+						}
+					})(marker, content));
+
+					resolve(this.markers);
+				}				
+			}
+		});
 	}
 
-	public addMarkerClusterer(){
+	public addMarkerClusterer(markers: any){
 		const img = {
 			imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
 			gridSize: 10,
 			minimumClusterSize: 2
 		  };
 	  
-		  if (this.markers !== null && this.markers !== undefined) {
+		  if (markers !== null && markers !== undefined) {
 			if (this.markers.length > 0) {
-				this.markerClusterer = new MarkerClusterer(this.gMap, this.markers, img);
-				this.markerClusterer.addMarkers(this.markers);
+				this.markerClusterer = new MarkerClusterer(this.gMap, markers, img);
+				this.markerClusterer.addMarkers(markers);
 			}
 		  }
 	}
@@ -175,8 +176,9 @@ export class GoogleMapsCluster implements ComponentFramework.StandardControl<IIn
 			setTimeout(() => {
 				this.initMap();
 				this.getCurrentLocation();
-				this.getData(context);
-				this.addMarkerClusterer();
+				this.getData(context).then((markers: any) => {
+					this.addMarkerClusterer(markers);
+				});
 			}, 500);			
 		});
 	}
