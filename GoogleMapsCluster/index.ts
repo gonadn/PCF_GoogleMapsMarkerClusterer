@@ -15,7 +15,7 @@ export class GoogleMapsCluster implements ComponentFramework.StandardControl<IIn
 	private _context: ComponentFramework.Context<IInputs>;
 	private _container: HTMLDivElement;
 	private _refreshData: EventListenerOrEventListenerObject;
-	private MAPS_API_KEY: string = "AIzaSyB9JBhMP-hhRqP5dgqzxZ6Pm4_z2Fz32V8";
+	private MAPS_API_KEY: string = "";
 	private _notifyOutputChanged: () => void;
 	private _htmlDivElement: HTMLDivElement;
 	private _mapDiv: HTMLDivElement;
