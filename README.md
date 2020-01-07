@@ -1,4 +1,4 @@
-PCF - Google Maps Grid
+<h1>PCF - Google Maps MarkerClusterer</h1>
 A PCF control to render a view of records on Google Maps using the location information (lat/long) againt each record.
 
 Features
