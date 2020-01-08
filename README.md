@@ -14,7 +14,8 @@ A PCF control to render a view of records on Google Maps using the location info
 <p>YouTube: https://www.youtube.com/watch?v=1JNwpp5L4vM</p>
 <p>Google Maps Platform: https://developers.google.com/maps/documentation/embed/get-api-key</p>
 
-<img src='https://photos.app.goo.gl/d8fw2tZCUBhrP7q86' alt='' >
+<img src='https://photos.app.goo.gl/yJfpfdAgyoJRyAko9' >
+
 </br>
 <h2>Configuration</h2>
 
