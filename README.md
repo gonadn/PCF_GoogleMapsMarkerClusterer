@@ -14,7 +14,7 @@ A PCF control to render a view of records on Google Maps using the location info
 <p>YouTube: https://www.youtube.com/watch?v=1JNwpp5L4vM</p>
 <p>Google Maps Platform: https://developers.google.com/maps/documentation/embed/get-api-key</p>
 
-<img src='https://photos.app.goo.gl/yJfpfdAgyoJRyAko9' >
+<img src='https://lh3.googleusercontent.com/nKSzq4OqCQCTmCo0T4vECTZwrP4l_FL07XZcjwUddO1-qi9p28jdKKLGbgY2_mCc3YQKlGiNUUO0WUaEEcpscUwnidB9uZu4A2p9oOsLBxEDrlZVE9rhh-V8zAjG6HFWWLNShuz-XYVNHajwXlIm3-h_xGZGmg0zScAIgz3kAzCJxvxtAHWUruG6geqHIw3lVATzCk-nWoNT7rXk6lk4dmI4nmR3Qjx7AhRDtaVJDXWpmAGMFpzMd83Y2I7XCWk3xlI2_CM7xPfQr6-MZes47pGyywSHpJdOP3s5gTm43cuEnqdRdFK-kmc0idNB4doNOyrkf7aodkjpg23VHPfv13AdhvBXxWK6Vf7RCzd-HN9kXSdVTarTC9E4LSlm6mNOiYc_SJdpcAy4CkjcA4WCfK5Jg0eVXY6mwwVL6csOXm-unlnvvGYwJAZbZ23qYYFdjCAbvi3olnQbYrCTIKgEqIvtlkqYL_PAunVqwXSFPb5SVQ5JgkcDBZ4WKdHfqFBhfy_3zgsjQVtsSKr0Qr_WRY3DKNohEVyQfYX8snFdhbOYLUtP6KvOe3C_FiKj_CTolCw0LeJgxt2ZPiJaXVZ5Mrwz_hj1j6TN2Bl_Kw_W-s7jAzCtkwsXzuKWDJmQRzydOdUDaSnJSDtmAaYq7Eoa2XBt0AwcDnCY4NmrpNRbJoPs_8ItkyyBs_7UYMV5QfjU1wHBdd2dq4d6J47OcpsaT8btJSZPhyMvEHk8Y7Cjr4_196NJ=w1669-h905-no' >
 
 </br>
 <h2>Configuration</h2>
